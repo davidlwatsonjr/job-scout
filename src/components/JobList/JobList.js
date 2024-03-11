@@ -4,7 +4,7 @@ import { LinearProgress } from "@mui/material";
 
 function JobList() {
   const todayDate = new Date().toLocaleDateString();
-  const [isLoadingJobs, setIsLoadingJobs] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [jobList, setJobList] = useState(
     localStorage.getItem("jobList")
       ? JSON.parse(localStorage.getItem("jobList"))
@@ -13,26 +13,25 @@ function JobList() {
 
   useEffect(() => {
     (async () => {
-      setIsLoadingJobs(true);
+      setIsLoading(true);
       const response = await fetch("https://jobs.davidlwatsonjr.com/jobs");
       const { jobs } = await response.json();
       setJobList(jobs);
-      setIsLoadingJobs(false);
+      setIsLoading(false);
       localStorage.setItem("jobList", JSON.stringify(jobs));
     })();
   }, []);
 
   return (
     <div data-testid="job-list">
-      <div className="JobsLoadingBar">
-        {isLoadingJobs && <LinearProgress />}
+      <div className="LoadingBar">
+        {isLoading && <LinearProgress />}
       </div>
-      <h1>Job List</h1>
       <ul data-testid="job-list-ul" className="JobList">
         {jobList?.map?.((job) => (
           <li key={job.fullLinkMD5}>
             {job.createdDate === todayDate && <span>🌟</span>}
-            <a href={job.fullLink} title={job.createdDate}>
+            <a href={job.fullLink} target="_blank" rel="noopener noreferrer" title={job.createdDate}>
               {job.title}
             </a>
             {job.createdDate === todayDate && <span>🌟</span>}

@@ -10,6 +10,7 @@ function App() {
   return (
     <div className="App">
       <CssBaseline />
+      <h1>Job List</h1>
       <JobList />
     </div>
   );
