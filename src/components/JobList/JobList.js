@@ -30,9 +30,11 @@ function JobList() {
       <ul data-testid="job-list-ul" className="JobList">
         {jobList?.map?.((job) => (
           <li key={job.fullLinkMD5}>
+            {job.createdDate === todayDate && <span>🌟</span>}
             <a href={job.fullLink} title={job.createdDate}>
               {job.title}
             </a>
+            {job.createdDate === todayDate && <span>🌟</span>}
           </li>
         ))}
       </ul>
