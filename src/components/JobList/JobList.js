@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "./JobList.css";
 
 function JobList({ jobList }) {
@@ -21,5 +22,16 @@ function JobList({ jobList }) {
     </ul>
   );
 }
+
+JobList.propTypes = {
+  jobList: PropTypes.arrayOf(
+    PropTypes.shape({
+      fullLinkMD5: PropTypes.string,
+      fullLink: PropTypes.string,
+      title: PropTypes.string,
+      createdDate: PropTypes.string,
+    }),
+  ),
+};
 
 export default JobList;
