@@ -24,17 +24,20 @@ function JobList() {
 
   return (
     <div data-testid="job-list">
-      <div className="LoadingBar">
-        {isLoading && <LinearProgress />}
-      </div>
+      <div className="LoadingBar">{isLoading && <LinearProgress />}</div>
       <ul data-testid="job-list-ul" className="JobList">
         {jobList?.map?.((job) => (
           <li key={job.fullLinkMD5}>
-            {job.createdDate === todayDate && <span>🌟</span>}
-            <a href={job.fullLink} target="_blank" rel="noopener noreferrer" title={job.createdDate}>
+            <a
+              href={job.fullLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={job.createdDate}
+            >
+              {job.createdDate === todayDate && <span>🌟</span>}
               {job.title}
+              {job.createdDate === todayDate && <span>🌟</span>}
             </a>
-            {job.createdDate === todayDate && <span>🌟</span>}
           </li>
         ))}
       </ul>

@@ -9,3 +9,13 @@
   list-style: none;
   padding: 0;
 }
+
+.JobList a {
+  background: #222d3d;
+  border: 1px solid #374963;
+  color: #3391ff;
+  display: block;
+  margin: 4px;
+  padding: 4px;
+  text-decoration: none;
+}
