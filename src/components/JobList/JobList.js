@@ -3,6 +3,7 @@ import "./JobList.css";
 import { LinearProgress } from "@mui/material";
 
 function JobList() {
+  const todayDate = new Date().toLocaleDateString();
   const [isLoadingJobs, setIsLoadingJobs] = useState(true);
   const [jobList, setJobList] = useState(
     localStorage.getItem("jobList")
