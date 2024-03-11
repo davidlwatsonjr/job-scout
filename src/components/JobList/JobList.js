@@ -16,9 +16,9 @@ function JobList() {
       setIsLoadingJobs(true);
       const response = await fetch("https://jobs.davidlwatsonjr.com/jobs");
       const { jobs } = await response.json();
-      localStorage.setItem("jobList", JSON.stringify(jobs));
       setJobList(jobs);
       setIsLoadingJobs(false);
+      localStorage.setItem("jobList", JSON.stringify(jobs));
     })();
   }, []);
 
