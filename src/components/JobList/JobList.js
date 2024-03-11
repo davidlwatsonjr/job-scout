@@ -17,7 +17,7 @@ function JobList() {
       <h1>Job List</h1>
       <ul data-testid="job-list-ul" className="JobList">
         {jobList?.map?.((job) => (
-          <li key={job.fullLink}>
+          <li key={job.fullLinkMD5}>
             <a href={job.fullLink} title={job.createdDate}>
               {job.title}
             </a>
