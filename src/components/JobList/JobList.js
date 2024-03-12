@@ -1,5 +1,10 @@
 import PropTypes from "prop-types";
 import "./JobList.css";
+import IconButton from "@mui/material/IconButton";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
+import DeleteIcon from "@mui/icons-material/Delete";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 function JobList({ jobList, updateJob }) {
   const todayDate = new Date().toLocaleDateString();
@@ -7,34 +12,52 @@ function JobList({ jobList, updateJob }) {
     <ul data-testid="job-list" className="JobList">
       {jobList?.map?.((job) => (
         <li className="JobListItem" key={job.fullLinkMD5}>
-          {job.createdDate === todayDate && "🌟"}
-          <a
-            href={job.fullLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            title={job.createdDate}
-          >
-            {job.title}
-          </a>
-          {job.createdDate === todayDate && "🌟"}
-          {!job.applied ? (
-            <button onClick={() => updateJob(job, { applied: true })}>
-              Mark as applied
-            </button>
-          ) : (
-            <button onClick={() => updateJob(job, { applied: false })}>
-              Unmark as applied
-            </button>
-          )}
-          {job.interested !== false ? (
-            <button onClick={() => updateJob(job, { interested: false })}>
-              Mark as not interested
-            </button>
-          ) : (
-            <button onClick={() => updateJob(job, { interested: true })}>
-              Mark as interested
-            </button>
-          )}
+          <div>
+            {job.createdDate === todayDate && "🌟"}
+            <a
+              href={job.fullLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={job.createdDate}
+            >
+              {job.title}
+            </a>
+            {job.createdDate === todayDate && "🌟"}
+          </div>
+          <div>
+            {!job.applied && job.interested !== false && (
+              <>
+                <IconButton
+                  title="Mark as applied"
+                  onClick={() => updateJob(job, { applied: true })}
+                >
+                  <CheckBoxOutlineBlankIcon />
+                </IconButton>
+                <IconButton
+                  title="Mark as uninterested"
+                  onClick={() => updateJob(job, { interested: false })}
+                >
+                  <DeleteOutlineIcon />
+                </IconButton>
+              </>
+            )}
+            {job.applied && (
+              <IconButton
+                title="Unmark as applied"
+                onClick={() => updateJob(job, { applied: false })}
+              >
+                <CheckBoxIcon />
+              </IconButton>
+            )}
+            {job.interested === false && (
+              <IconButton
+                title="Mark as interested"
+                onClick={() => updateJob(job, { interested: true })}
+              >
+                <DeleteIcon />
+              </IconButton>
+            )}
+          </div>
         </li>
       ))}
     </ul>

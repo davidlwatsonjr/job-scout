@@ -1,13 +1,7 @@
 .App {
-  background-color: #0d1117;
-  color: #e8e6e3de;
   padding-block-start: 0.67em;
   padding-block-end: 0.67em;
   text-align: center;
-}
-
-.App h1 {
-  margin: 0;
 }
 
 .LoadingBar {
