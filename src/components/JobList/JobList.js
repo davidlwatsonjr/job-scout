@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import "./JobList.css";
 
-function JobList({ jobList }) {
+function JobList({ jobList, updateJob }) {
   const todayDate = new Date().toLocaleDateString();
   return (
     <ul data-testid="job-list" className="JobList">
@@ -17,6 +17,24 @@ function JobList({ jobList }) {
             {job.title}
           </a>
           {job.createdDate === todayDate && "🌟"}
+          {!job.applied ? (
+            <button onClick={() => updateJob(job, { applied: true })}>
+              Mark as applied
+            </button>
+          ) : (
+            <button onClick={() => updateJob(job, { applied: false })}>
+              Unmark as applied
+            </button>
+          )}
+          {job.interested !== false ? (
+            <button onClick={() => updateJob(job, { interested: false })}>
+              Mark as not interested
+            </button>
+          ) : (
+            <button onClick={() => updateJob(job, { interested: true })}>
+              Mark as interested
+            </button>
+          )}
         </li>
       ))}
     </ul>
@@ -32,6 +50,7 @@ JobList.propTypes = {
       createdDate: PropTypes.string,
     }),
   ),
+  updateJob: PropTypes.func,
 };
 
 export default JobList;
