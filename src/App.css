@@ -9,3 +9,10 @@
 .App h1 {
   margin: 0;
 }
+
+.LoadingBar {
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
