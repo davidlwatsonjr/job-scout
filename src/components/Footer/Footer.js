@@ -1,6 +1,6 @@
 function Footer() {
-  const handleFooterValueChange = (e) => {
-    localStorage.setItem("footerValue", e.target.value);
+  const handleUserUUIDChange = (e) => {
+    localStorage.setItem("userUUID", e.target.value);
   };
 
   return (
@@ -8,9 +8,13 @@ function Footer() {
       <p>
         A <a href="https://davidlwatsonjr.com">davidlwatsonjr</a> production.
       </p>
-      <p>
-        <input type="text" onChange={handleFooterValueChange} />
-      </p>
+      <input
+        type="text"
+        defaultValue={localStorage.getItem("userUUID")}
+        size={36}
+        onChange={handleUserUUIDChange}
+      />
+      <button onClick={() => window.location.reload()}>Refresh</button>
     </footer>
   );
 }

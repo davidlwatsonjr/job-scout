@@ -9,6 +9,10 @@ import "@fontsource/roboto/700.css";
 import JobList from "./components/JobList/JobList";
 import Footer from "./components/Footer/Footer";
 
+if (!localStorage.getItem("userUUID")) {
+  localStorage.setItem("userUUID", crypto.randomUUID());
+}
+
 function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [shouldListReload, setShouldListReload] = useState(false);
@@ -19,7 +23,9 @@ function App() {
   );
 
   const loadList = useCallback(async () => {
-    const response = await fetch("https://jobs.davidlwatsonjr.com/jobs");
+    const response = await fetch("https://jobs.davidlwatsonjr.com/jobs", {
+      headers: { "x-useruuid": localStorage.getItem("userUUID") },
+    });
     const { jobs } = await response.json();
     setJobList(jobs);
     setIsLoading(false);
@@ -55,7 +61,7 @@ function App() {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          "x-api-key": localStorage.getItem("footerValue"),
+          "x-useruuid": localStorage.getItem("userUUID"),
         },
         body: JSON.stringify(properties),
       },
