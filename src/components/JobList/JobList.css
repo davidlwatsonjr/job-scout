@@ -10,12 +10,15 @@
   padding: 0;
 }
 
-.JobList a {
-  background: #222d3d;
-  border: 1px solid #374963;
-  color: #3391ff;
-  display: block;
+.JobListItem {
+  align-items: center;
+  display: flex;
+  justify-content: center;
   margin: 4px;
+}
+
+.JobList a {
+  color: #3391ff;
   padding: 4px;
   text-decoration: none;
 }

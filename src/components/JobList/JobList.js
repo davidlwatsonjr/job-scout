@@ -6,17 +6,17 @@ function JobList({ jobList }) {
   return (
     <ul data-testid="job-list" className="JobList">
       {jobList?.map?.((job) => (
-        <li key={job.fullLinkMD5}>
+        <li className="JobListItem" key={job.fullLinkMD5}>
+          {job.createdDate === todayDate && "🌟"}
           <a
             href={job.fullLink}
             target="_blank"
             rel="noopener noreferrer"
             title={job.createdDate}
           >
-            {job.createdDate === todayDate && <span>🌟</span>}
             {job.title}
-            {job.createdDate === todayDate && <span>🌟</span>}
           </a>
+          {job.createdDate === todayDate && "🌟"}
         </li>
       ))}
     </ul>
