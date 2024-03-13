@@ -8,13 +8,14 @@ function Footer() {
   };
 
   return (
-    <footer className="Footer">
+    <footer>
       <div>
         <TextField
           size="small"
           fullWidth
           defaultValue={localStorage.getItem("userUUID")}
           onChange={handleUserUUIDChange}
+          sx={{ maxWidth: "38ch" }}
         />
         <IconButton title="Refresh" onClick={() => window.location.reload()}>
           <RefreshIcon />
