@@ -1,22 +1,20 @@
 import { useCallback, useEffect, useState } from "react";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Accordion from "@mui/material/Accordion";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import LinearProgress from "@mui/material/LinearProgress";
+import ThemeProvider from "@mui/material/styles/ThemeProvider";
+import createTheme from "@mui/material/styles/createTheme";
+import Footer from "./components/Footer/Footer";
+import JobList from "./components/JobList/JobList";
 import "./App.css";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import JobList from "./components/JobList/JobList";
-import Footer from "./components/Footer/Footer";
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Container,
-  ThemeProvider,
-  createTheme,
-} from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 if (!localStorage.getItem("userUUID")) {
   localStorage.setItem("userUUID", crypto.randomUUID());

@@ -1,6 +1,7 @@
 import RefreshIcon from "@mui/icons-material/Refresh";
+import IconButton from "@mui/material/IconButton";
+import TextField from "@mui/material/TextField";
 import "./Footer.css";
-import { IconButton, TextField } from "@mui/material";
 
 function Footer() {
   const handleUserUUIDChange = (e) => {
