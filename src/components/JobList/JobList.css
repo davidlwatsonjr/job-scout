@@ -11,8 +11,11 @@
 }
 
 .JobListItemInfo {
-  margin-inline-end: 4px;
   text-align: left;
+}
+
+.JobListItemInfo a {
+  margin-inline-end: 4px;
 }
 
 .JobListItemActions {
