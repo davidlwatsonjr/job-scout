@@ -10,19 +10,19 @@ function Footer() {
   return (
     <footer className="Footer">
       <div>
-        A <a href="https://davidlwatsonjr.com">davidlwatsonjr</a> production.
-      </div>
-      <div>
         <TextField
           size="small"
+          fullWidth
           defaultValue={localStorage.getItem("userUUID")}
           onChange={handleUserUUIDChange}
-          sx={{ width: "38ch" }}
         />
         <IconButton title="Refresh" onClick={() => window.location.reload()}>
           <RefreshIcon />
         </IconButton>
       </div>
+      <p>
+        A <a href="https://davidlwatsonjr.com">davidlwatsonjr</a> production.
+      </p>
     </footer>
   );
 }
