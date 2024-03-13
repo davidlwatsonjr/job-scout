@@ -1,20 +1,27 @@
+import RefreshIcon from "@mui/icons-material/Refresh";
+import "./Footer.css";
+import { IconButton, TextField } from "@mui/material";
+
 function Footer() {
   const handleUserUUIDChange = (e) => {
     localStorage.setItem("userUUID", e.target.value);
   };
 
   return (
-    <footer>
-      <p>
+    <footer className="Footer">
+      <div>
         A <a href="https://davidlwatsonjr.com">davidlwatsonjr</a> production.
-      </p>
-      <input
-        type="text"
-        defaultValue={localStorage.getItem("userUUID")}
-        size={36}
-        onChange={handleUserUUIDChange}
-      />
-      <button onClick={() => window.location.reload()}>Refresh</button>
+      </div>
+      <div>
+        <TextField
+          size="small"
+          defaultValue={localStorage.getItem("userUUID")}
+          onChange={handleUserUUIDChange}
+        />
+        <IconButton title="Refresh" onClick={() => window.location.reload()}>
+          <RefreshIcon />
+        </IconButton>
+      </div>
     </footer>
   );
 }

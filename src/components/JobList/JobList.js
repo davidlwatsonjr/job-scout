@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
-import "./JobList.css";
 import IconButton from "@mui/material/IconButton";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import "./JobList.css";
 
 function JobList({ jobList, updateJob }) {
   const todayDate = new Date().toLocaleDateString();

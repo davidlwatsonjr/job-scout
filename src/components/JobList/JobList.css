@@ -14,11 +14,6 @@
   text-align: left;
 }
 
-.JobList a {
-  color: #3391ff;
-  text-decoration: none;
-}
-
 .JobListItemActions {
   white-space: nowrap;
 }
