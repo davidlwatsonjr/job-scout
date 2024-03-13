@@ -12,8 +12,7 @@ function JobList({ jobList, updateJob }) {
     <ul data-testid="job-list" className="JobList">
       {jobList?.map?.((job) => (
         <li className="JobListItem" key={job.fullLinkMD5}>
-          <div>
-            {job.createdDate === todayDate && "🌟"}
+          <div className="JobListItemInfo">
             <a
               href={job.fullLink}
               target="_blank"
@@ -24,7 +23,7 @@ function JobList({ jobList, updateJob }) {
             </a>
             {job.createdDate === todayDate && "🌟"}
           </div>
-          <div>
+          <div className="JobListItemActions">
             {!job.applied && job.interested !== false && (
               <>
                 <IconButton

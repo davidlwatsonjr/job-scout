@@ -6,12 +6,19 @@
 .JobListItem {
   align-items: center;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin: 4px;
 }
 
 .JobList a {
   color: #3391ff;
-  padding: 4px;
   text-decoration: none;
+}
+
+.JobListItemInfo {
+  text-align: left;
+}
+
+.JobListItemActions {
+  white-space: nowrap;
 }
