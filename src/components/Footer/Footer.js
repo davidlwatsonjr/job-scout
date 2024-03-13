@@ -17,6 +17,7 @@ function Footer() {
           size="small"
           defaultValue={localStorage.getItem("userUUID")}
           onChange={handleUserUUIDChange}
+          sx={{ width: "38ch" }}
         />
         <IconButton title="Refresh" onClick={() => window.location.reload()}>
           <RefreshIcon />
