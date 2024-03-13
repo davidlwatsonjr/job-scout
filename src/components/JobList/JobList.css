@@ -10,13 +10,13 @@
   margin: 4px;
 }
 
+.JobListItemInfo {
+  text-align: left;
+}
+
 .JobList a {
   color: #3391ff;
   text-decoration: none;
-}
-
-.JobListItemInfo {
-  text-align: left;
 }
 
 .JobListItemActions {
