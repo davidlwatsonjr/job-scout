@@ -8,7 +8,15 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import JobList from "./components/JobList/JobList";
 import Footer from "./components/Footer/Footer";
-import { Container, ThemeProvider, createTheme } from "@mui/material";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Container,
+  ThemeProvider,
+  createTheme,
+} from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 if (!localStorage.getItem("userUUID")) {
   localStorage.setItem("userUUID", crypto.randomUUID());
@@ -102,16 +110,28 @@ function App() {
           )}
           updateJob={updateJob}
         />
-        <h1>Applied Jobs</h1>
-        <JobList
-          jobList={jobList.filter((job) => job.applied)}
-          updateJob={updateJob}
-        />
-        <h1>Uninterested Jobs</h1>
-        <JobList
-          jobList={jobList.filter((job) => job.interested === false)}
-          updateJob={updateJob}
-        />
+        <Accordion>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            Applied Jobs
+          </AccordionSummary>
+          <AccordionDetails>
+            <JobList
+              jobList={jobList.filter((job) => job.applied)}
+              updateJob={updateJob}
+            />
+          </AccordionDetails>
+        </Accordion>
+        <Accordion>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            Uninterested Jobs
+          </AccordionSummary>
+          <AccordionDetails>
+            <JobList
+              jobList={jobList.filter((job) => job.interested === false)}
+              updateJob={updateJob}
+            />
+          </AccordionDetails>
+        </Accordion>
         <Footer />
       </Container>
     </ThemeProvider>

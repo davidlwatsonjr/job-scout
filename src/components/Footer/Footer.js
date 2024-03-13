@@ -8,7 +8,7 @@ function Footer() {
   };
 
   return (
-    <footer>
+    <footer className="Footer">
       <div>
         <TextField
           size="small"
