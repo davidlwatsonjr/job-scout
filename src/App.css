@@ -9,6 +9,10 @@ a {
   text-align: center;
 }
 
+.App.MuiContainer-root {
+  max-width: 800px;
+}
+
 .LoadingBar {
   left: 0;
   position: fixed;

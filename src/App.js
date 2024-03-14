@@ -98,9 +98,9 @@ function App() {
 
   return (
     <ThemeProvider theme={darkTheme}>
+      <CssBaseline enableColorScheme />
+      <div className="LoadingBar">{isLoading && <LinearProgress />}</div>
       <Container className="App">
-        <CssBaseline enableColorScheme />
-        <div className="LoadingBar">{isLoading && <LinearProgress />}</div>
         <h1>Job List</h1>
         <JobList
           jobList={jobList.filter(
