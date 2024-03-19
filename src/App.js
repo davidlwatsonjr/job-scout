@@ -113,7 +113,9 @@ function App() {
           </AccordionSummary>
           <AccordionDetails>
             <JobList
-              jobList={jobList.filter((job) => job.applied)}
+              jobList={jobList.filter(
+                (job) => job.applied && job.interested !== false,
+              )}
               updateJob={updateJob}
             />
           </AccordionDetails>

@@ -24,23 +24,14 @@ function JobList({ jobList, updateJob }) {
             {job.createdDate === todayDate && "🌟"}
           </div>
           <div className="JobListItemActions">
-            {!job.applied && job.interested !== false && (
-              <>
-                <IconButton
-                  title="Mark as applied"
-                  onClick={() => updateJob(job, { applied: true })}
-                >
-                  <CheckBoxOutlineBlankIcon />
-                </IconButton>
-                <IconButton
-                  title="Mark as uninterested"
-                  onClick={() => updateJob(job, { interested: false })}
-                >
-                  <DeleteOutlineIcon />
-                </IconButton>
-              </>
-            )}
-            {job.applied && (
+            {!job.applied ? (
+              <IconButton
+                title="Mark as applied"
+                onClick={() => updateJob(job, { applied: true })}
+              >
+                <CheckBoxOutlineBlankIcon />
+              </IconButton>
+            ) : (
               <IconButton
                 title="Unmark as applied"
                 onClick={() => updateJob(job, { applied: false })}
@@ -48,7 +39,14 @@ function JobList({ jobList, updateJob }) {
                 <CheckBoxIcon />
               </IconButton>
             )}
-            {job.interested === false && (
+            {job.interested !== false ? (
+              <IconButton
+                title="Mark as uninterested"
+                onClick={() => updateJob(job, { interested: false })}
+              >
+                <DeleteOutlineIcon />
+              </IconButton>
+            ) : (
               <IconButton
                 title="Mark as interested"
                 onClick={() => updateJob(job, { interested: true })}
