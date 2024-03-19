@@ -64,7 +64,7 @@ function App() {
 
   const updateJobInJobList = (job) => {
     const newJobList = jobList.map((j) =>
-      j.fullLinkMD5 === job.fullLinkMD5 ? job : j,
+      j.fullLinkMD5 === job.fullLinkMD5 ? { ...j, ...job } : j,
     );
     setJobList(newJobList);
   };
