@@ -81,8 +81,7 @@ function App() {
     if (!response.ok) {
       throw new Error("Failed to update job");
     }
-    const persistedJob = await response.json();
-    return persistedJob?.job;
+    return await response.json();
   };
 
   const updateJob = async (job, properties) => {
