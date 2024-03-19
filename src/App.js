@@ -90,6 +90,7 @@ function App() {
       const persistedJob = await persistJobProperties(job, properties);
       updateJobInJobList(persistedJob);
     } catch (e) {
+      console.error(`Reloading job list because of error ${e}`);
       setShouldListReload(true);
     }
   };
