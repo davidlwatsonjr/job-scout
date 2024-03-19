@@ -26,6 +26,8 @@ const darkTheme = createTheme({
   },
 });
 
+const JOBS_API_URL = "https://jobs.davidlwatsonjr.com/jobs";
+
 function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [shouldListReload, setShouldListReload] = useState(false);
@@ -36,7 +38,7 @@ function App() {
   );
 
   const loadList = useCallback(async () => {
-    const response = await fetch("https://jobs.davidlwatsonjr.com/jobs", {
+    const response = await fetch(JOBS_API_URL, {
       headers: { "x-useruuid": localStorage.getItem("userUUID") },
     });
     const { jobs } = await response.json();
@@ -68,17 +70,14 @@ function App() {
   };
 
   const persistJobProperties = async (job, properties) => {
-    const response = await fetch(
-      `https://jobs.davidlwatsonjr.com/jobs/${job.fullLinkMD5}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          "x-useruuid": localStorage.getItem("userUUID"),
-        },
-        body: JSON.stringify(properties),
+    const response = await fetch(`${JOBS_API_URL}/${job.fullLinkMD5}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "x-useruuid": localStorage.getItem("userUUID"),
       },
-    );
+      body: JSON.stringify(properties),
+    });
     if (!response.ok) {
       throw new Error("Failed to update job");
     }
