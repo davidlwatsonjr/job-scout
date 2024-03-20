@@ -1,6 +1,7 @@
 {
-  "short_name": "Job Scout",
   "name": "Job Scout",
+  "short_name": "Job Scout",
+  "description": "Job Scout brings you the latest job listings from around the web.",
   "icons": [
     {
       "src": "favicon.ico",
