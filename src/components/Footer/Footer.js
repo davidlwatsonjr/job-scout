@@ -1,7 +1,9 @@
 import RefreshIcon from "@mui/icons-material/Refresh";
+import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
+import Link from "@mui/material/Link";
+import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
-import "./Footer.css";
 
 function Footer() {
   const handleUserUUIDChange = (e) => {
@@ -9,8 +11,8 @@ function Footer() {
   };
 
   return (
-    <footer className="Footer">
-      <div>
+    <Box component="footer" margin={2}>
+      <Stack direction="row" justifyContent="center" margin={2} spacing={2}>
         <TextField
           size="small"
           fullWidth
@@ -21,11 +23,18 @@ function Footer() {
         <IconButton title="Refresh" onClick={() => window.location.reload()}>
           <RefreshIcon />
         </IconButton>
-      </div>
-      <p>
-        A <a href="https://davidlwatsonjr.com">davidlwatsonjr</a> production.
-      </p>
-    </footer>
+      </Stack>
+      A{" "}
+      <Link
+        underline="hover"
+        href="https://davidlwatsonjr.com"
+        target="_blank"
+        rel="noreferrer"
+      >
+        davidlwatsonjr
+      </Link>{" "}
+      production.
+    </Box>
   );
 }
 
