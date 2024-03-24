@@ -11,7 +11,7 @@ function Footer() {
   };
 
   return (
-    <Box component="footer" margin={2}>
+    <Box component="footer">
       <Stack direction="row" justifyContent="center" margin={2} spacing={2}>
         <TextField
           size="small"
