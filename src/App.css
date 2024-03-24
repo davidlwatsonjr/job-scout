@@ -12,10 +12,3 @@ a {
 .App.MuiContainer-root {
   max-width: 800px;
 }
-
-.LoadingBar {
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-}

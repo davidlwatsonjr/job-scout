@@ -3,6 +3,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
+import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import LinearProgress from "@mui/material/LinearProgress";
@@ -98,7 +99,11 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline enableColorScheme />
-      <div className="LoadingBar">{isLoading && <LinearProgress />}</div>
+      {isLoading && (
+        <Box position="fixed" top={0} left={0} right={0}>
+          <LinearProgress />
+        </Box>
+      )}
       <Container className="App">
         <h1>Job List</h1>
         <JobList
