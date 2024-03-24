@@ -15,7 +15,9 @@
 }
 
 .JobListItemInfo a {
+  color: #3391ff;
   margin-inline-end: 4px;
+  text-decoration: none;
 }
 
 .JobListItemActions {

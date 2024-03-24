@@ -7,11 +7,11 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import LinearProgress from "@mui/material/LinearProgress";
+import Typography from "@mui/material/Typography";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import createTheme from "@mui/material/styles/createTheme";
 import Footer from "./components/Footer/Footer";
 import JobList from "./components/JobList/JobList";
-import "./App.css";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
@@ -24,6 +24,9 @@ if (!localStorage.getItem("userUUID")) {
 const darkTheme = createTheme({
   palette: {
     mode: "dark",
+    primary: {
+      main: "#3391ff",
+    },
   },
 });
 
@@ -104,8 +107,10 @@ function App() {
           <LinearProgress />
         </Box>
       )}
-      <Container className="App">
-        <h1>Job List</h1>
+      <Container maxWidth="md" sx={{ textAlign: "center" }}>
+        <Typography component="h1" variant="h4" padding={2}>
+          Job List
+        </Typography>
         <JobList
           jobList={jobList.filter(
             (job) => !job.applied && job.interested !== false,
