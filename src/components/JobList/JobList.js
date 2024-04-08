@@ -30,6 +30,7 @@ function JobList({ jobList, updateJob }) {
                 {job.createdDate === todayDate && "🌟"}
               </>
             }
+            secondary={new URL(job.fullLink).hostname}
           />
           {!job.applied ? (
             <IconButton
