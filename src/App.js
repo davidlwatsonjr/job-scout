@@ -41,6 +41,10 @@ function App() {
       : [],
   );
 
+  const [highPriorityJobs, setHighPriorityJobs] = useState([]);
+  const [appliedJobs, setAppliedJobs] = useState([]);
+  const [uninterestedJobs, setUninterestedJobs] = useState([]);
+
   const loadList = useCallback(async () => {
     const response = await fetch(JOBS_API_URL, {
       headers: { "x-useruuid": localStorage.getItem("userUUID") },
@@ -60,6 +64,13 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("jobList", JSON.stringify(jobList));
+    setHighPriorityJobs(
+      jobList.filter((job) => job.isHighPriority && job.interested !== false),
+    );
+    setAppliedJobs(
+      jobList.filter((job) => job.applied && job.interested !== false),
+    );
+    setUninterestedJobs(jobList.filter((job) => job.interested === false));
   }, [jobList]);
 
   useEffect(() => {
@@ -111,36 +122,42 @@ function App() {
         <Typography component="h1" variant="h4" padding={2}>
           Job List
         </Typography>
+        {highPriorityJobs.length > 0 && (
+          <Accordion>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              High Priority Jobs ({highPriorityJobs.length})
+            </AccordionSummary>
+            <AccordionDetails>
+              <JobList jobList={highPriorityJobs} updateJob={updateJob} />
+            </AccordionDetails>
+          </Accordion>
+        )}
+        {appliedJobs.length > 0 && (
+          <Accordion>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              Applied Jobs ({appliedJobs.length})
+            </AccordionSummary>
+            <AccordionDetails>
+              <JobList jobList={appliedJobs} updateJob={updateJob} />
+            </AccordionDetails>
+          </Accordion>
+        )}
         <JobList
           jobList={jobList.filter(
             (job) => !job.applied && job.interested !== false,
           )}
           updateJob={updateJob}
         />
-        <Accordion>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            Applied Jobs
-          </AccordionSummary>
-          <AccordionDetails>
-            <JobList
-              jobList={jobList.filter(
-                (job) => job.applied && job.interested !== false,
-              )}
-              updateJob={updateJob}
-            />
-          </AccordionDetails>
-        </Accordion>
-        <Accordion>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            Uninterested Jobs
-          </AccordionSummary>
-          <AccordionDetails>
-            <JobList
-              jobList={jobList.filter((job) => job.interested === false)}
-              updateJob={updateJob}
-            />
-          </AccordionDetails>
-        </Accordion>
+        {uninterestedJobs.length > 0 && (
+          <Accordion>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              Uninterested Jobs ({uninterestedJobs.length})
+            </AccordionSummary>
+            <AccordionDetails>
+              <JobList jobList={uninterestedJobs} updateJob={updateJob} />
+            </AccordionDetails>
+          </Accordion>
+        )}
         <Footer />
       </Container>
     </ThemeProvider>

@@ -2,6 +2,8 @@ import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import StarIcon from "@mui/icons-material/Star";
+import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
 import List from "@mui/material/List";
@@ -32,6 +34,21 @@ function JobList({ jobList, updateJob }) {
             }
             secondary={new URL(job.fullLink).hostname}
           />
+          {!job.isHighPriority ? (
+            <IconButton
+              title="Mark as high priority"
+              onClick={() => updateJob(job, { isHighPriority: true })}
+            >
+              <StarOutlineIcon />
+            </IconButton>
+          ) : (
+            <IconButton
+              title="Unmark as high priority"
+              onClick={() => updateJob(job, { isHighPriority: false })}
+            >
+              <StarIcon />
+            </IconButton>
+          )}
           {!job.applied ? (
             <IconButton
               title="Mark as applied"
