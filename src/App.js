@@ -123,7 +123,7 @@ function App() {
           Job List
         </Typography>
         {highPriorityJobs.length > 0 && (
-          <Accordion>
+          <Accordion defaultExpanded>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               High Priority Jobs ({highPriorityJobs.length})
             </AccordionSummary>
@@ -144,7 +144,8 @@ function App() {
         )}
         <JobList
           jobList={jobList.filter(
-            (job) => !job.applied && job.interested !== false,
+            (job) =>
+              !job.isHighPriority && !job.applied && job.interested !== false,
           )}
           updateJob={updateJob}
         />
